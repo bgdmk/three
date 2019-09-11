@@ -157,8 +157,10 @@
         uid.addEventListener("click", function({ target }) {
           let obj = {};
           scene.children.map(function(el) {
-            target.remove();
-            el.uuid === target.id ? (obj = el) : el;
+            if (el.uuid === target.id) {
+              obj = el;
+              target.remove();
+            }
           });
           scene.remove(obj);
         });
